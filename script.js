@@ -49,15 +49,16 @@ function play() {
   
   
 
-  do {
+  while (a==true) {
     let agiskunString = prompt("Giskaðu tölu milli 0 og 100");
     let guess = parseGuess(guessString);
     getResponse(agiskunTala, random);
+
     if (agiskunTala == random) {
       a = false;
     }
-  } while (a==true);
-  
+  }
+
   
   //getResults();
   
