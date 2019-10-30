@@ -56,7 +56,7 @@ function play() {
   } while (!(agiskunTala==random));
   
   
-  getResults();
+  //getResults();
   
 
 
