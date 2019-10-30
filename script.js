@@ -44,16 +44,19 @@ function start() {
  */
 function play() {
   const random = randomNumber(1,100);
+  let a = true;
   
   
   
 
   do {
     let agiskunString = prompt("Giskaðu tölu milli 0 og 100");
-    let agiskunTala = parseGuess(agiskunString);
+    let guess = parseGuess(guessString);
     getResponse(agiskunTala, random);
-
-  } while (!(agiskunTala==random));
+    if (agiskunTala == random) {
+      a = false;
+    }
+  } while (a==true);
   
   
   //getResults();
