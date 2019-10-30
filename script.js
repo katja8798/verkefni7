@@ -46,10 +46,11 @@ function play() {
   const random = randomNumber(1,100);
   
   
-  let agiskunString = prompt("Giskaðu tölu milli 0 og 100");
-  let agiskunTala = parseGuess(agiskunString);
+  
 
   do {
+    let agiskunString = prompt("Giskaðu tölu milli 0 og 100");
+    let agiskunTala = parseGuess(agiskunString);
     getResponse(agiskunTala, random);
 
   } while (!(agiskunTala==random));
