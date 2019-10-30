@@ -14,7 +14,7 @@
  */
 
  const games = [];
-
+ let countAgiskun = 0;
 
  /**
   * Byrjar leikinn okkar með því að kalla í play().
@@ -49,7 +49,11 @@ function play() {
   let agiskunString = prompt("Giskaðu tölu milli 0 og 100");
   let agiskunTala = parseGuess(agiskunString);
 
-  getResponse(agiskunTala, random);
+  do {
+    getResponse(agiskunTala, random);
+
+  } while (!(agiskunTala==random));
+  
   
   getResults();
   
@@ -106,6 +110,7 @@ function parseGuess(input){
  * Math.abs skilar algildi tölu: |a| = Math.abs(a)
  */
 function getResponse(guess, correct) {
+
   if(guess < 0 || (guess == NaN)) {
     return alert('Ekki rétt');
   } else if (guess == correct) {
@@ -119,7 +124,6 @@ function getResponse(guess, correct) {
   } else if (Math.abs(correct - guess) < 50) {
     return alert('Mjög langt frá');
   }
-  
 }
 
 /**
