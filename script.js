@@ -52,14 +52,18 @@ function play() {
     if (guessString === null) {
       alert("Hætt var í miðju leik");
       break;
+    } else {
+      getResponse(guess, random);
+      if (guess === random) {
+        break;
+      } else if (guess !== random) {
+        fjoldiGuess += 1;
+      }
     }
-    getResponse(guess, random);
-    if (guess === random) {
-      break;
-    }
-    fjoldiGuess += 1;
   }
-  games[games.length] = fjoldiGuess; //lætur fjöldi guess í ákveðið sæti í fylki
+  if (fjoldiGuess !== 0) {
+    games[games.length] = fjoldiGuess; //lætur fjöldi guess í ákveðið sæti í fylki
+  }
 }
 
 /**
