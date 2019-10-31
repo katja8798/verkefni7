@@ -14,7 +14,6 @@
  */
 
  const games = [];
- let countAgiskun = 0;
 
  /**
   * Byrjar leikinn okkar með því að kalla í play().
@@ -44,26 +43,22 @@ function start() {
  */
 function play() {
   const random = randomNumber(1,100);
-  let a = true;
+  const a = true;
+  const fjoldiGuess = 0;
   
-  
-  
-
   do {
     let guessString = prompt("Giskaðu tölu milli 0 og 100");
     let guess = parseGuess(guessString);
     getResponse(guess, random);
     if (guess == random) {
-      a = false;
+      break;
     }
-
+    fjoldiGuess += 1;
   } while (a==true);
-  
-  
-  //getResults();
-  
 
-
+  games[games.length]=fjoldiGuess;//lætur fjöldi guess í ákveðið sæti í fylki
+  
+  getResults();
 }  
 
 /**
@@ -76,7 +71,14 @@ function play() {
  *    "Þú spilaðir engann leik >_<"
  */
 function getResults(){
-  calculateAverage();
+  const avg = calculateAverage();
+  const fjoldiGames = games.length;
+
+  if (games.length >= 1) {
+    return alert('Þú spilaðir ${fjoldiGame}\nMeðalfjöldi ágiskana var ${avg}');
+  } else {
+    return alert("Þú spilaðir engann leik");
+  }
 }
 
 /**
@@ -88,7 +90,7 @@ function getResults(){
  * þarf að útfæra með lykkju.
  */
 function calculateAverage(){
-
+  return games.reduce((a, b) => a + b, 0);
 }
 
 /**
