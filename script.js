@@ -11,7 +11,6 @@
  *  - Fyrsti leikur kláraðist í tveim ágiskunum.
  *  - Seinni leikur kláraðist í þrem ágiskunum.
  */
-
 const games = [];
 
 /**
@@ -124,7 +123,7 @@ function parseGuess(input) {
  * Math.abs skilar algildi tölu: |a| = Math.abs(a)
  */
 function getResponse(guess, correct) {
-  if (guess < 0 || guess === null) {
+  if (guess < 0 || isNaN(guess)) {
     return alert("Ekki rétt");
   } else if (guess == correct) {
     return alert("Rétt");
