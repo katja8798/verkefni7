@@ -24,7 +24,8 @@
 function start() {
   do {
   play();
-  } while(confirm("Viltu spila annan leik?"))
+  } while(confirm('Viltu spila annan leik?'))
+  getResults();
 } 
 
 /**
@@ -43,22 +44,20 @@ function start() {
  */
 function play() {
   const random = randomNumber(1,100);
-  const a = true;
-  const fjoldiGuess = 0;
-  
-  do {
-    let guessString = prompt("Giskaðu tölu milli 0 og 100");
+  var a = true;
+  var fjoldiGuess = 0;
+
+  while (a == true) {
+    let guessString = prompt('Giskaðu tölu milli 0 og 100');
     let guess = parseGuess(guessString);
     getResponse(guess, random);
     if (guess == random) {
       break;
     }
     fjoldiGuess += 1;
-  } while (a==true);
+  }
 
   games[games.length]=fjoldiGuess;//lætur fjöldi guess í ákveðið sæti í fylki
-  
-  getResults();
 }  
 
 /**
@@ -71,13 +70,17 @@ function play() {
  *    "Þú spilaðir engann leik >_<"
  */
 function getResults(){
-  const avg = calculateAverage();
-  const fjoldiGames = games.length;
+  
+
+  //const avg = parseString(average);
+
 
   if (games.length >= 1) {
-    return alert('Þú spilaðir ${fjoldiGame}\nMeðalfjöldi ágiskana var ${avg}');
+    const avg = calculateAverage();
+    const fjoldiGames = (games.length);
+    return alert(`Þú spilaðir ${fjoldiGames}\nMeðalfjöldi ágiskana var ${avg}`);
   } else {
-    return alert("Þú spilaðir engann leik");
+    return alert('Þú spilaðir engann leik');
   }
 }
 
@@ -90,7 +93,7 @@ function getResults(){
  * þarf að útfæra með lykkju.
  */
 function calculateAverage(){
-  return games.reduce((a, b) => a + b, 0);
+  return (games.reduce((a, b) => a + b, 0))/games.length;
 }
 
 /**
